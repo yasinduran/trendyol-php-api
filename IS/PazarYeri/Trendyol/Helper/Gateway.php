@@ -34,6 +34,8 @@ Class GateWay
 	 */
     public $apiTestMode;
 
+    public $data;
+
 	/**
 	 *
 	 * @description REST Api için kabul edilen servisler
@@ -47,14 +49,15 @@ Class GateWay
 		'order'      => 'OrderService',
 		'webhook'    => 'WebhookService',
 		'settlement' => 'SettlementService',
+        'question'   => 'QuestionService',
 	);
 
 	/**
 	 *
 	 * @description REST Api servislerinin ilk çağırma için hazırlanması
 	 * @param string 
-	 * @return service
-	 *
+	 * @return string
+     *
 	 */
     public function __get($name)
     {
@@ -66,8 +69,10 @@ Class GateWay
 			return $this->$name;
 		}
 
-		$this->$name = $this->createServiceInstance($this->allowedServices[$name]);
-		return $this->$name;
+        // $this->$name deprecated, is alternative
+
+		$this->data[$name] = $this->createServiceInstance($this->allowedServices[$name]);
+		return $this->data[$name];
     }
 
     /**

@@ -17,6 +17,8 @@ Class CategoryService extends Request
 	 */
 	public $apiUrl = 'https://api.trendyol.com/sapigw/product-categories';
 
+    public $baseApiUrl = 'https://api.trendyol.com/sapigw/product-categories';
+
 	/**
 	 *
 	 * Request sınıfı için gerekli ayarların yapılması
@@ -64,6 +66,7 @@ Class CategoryService extends Request
 	 */
 	public function getCategoryAttributes($categoryId)
 	{
+        $this->setApiUrl($this->baseApiUrl);
 		$this->setApiUrl($this->apiUrl . '/{categoryId}/attributes');
 		return $this->getResponse(true, array('categoryId' => $categoryId), false);
 	}
