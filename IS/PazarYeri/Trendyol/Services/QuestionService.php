@@ -62,12 +62,14 @@ Class QuestionService extends Request
     {
         $this->setApiUrl($this->baseApiUrl);
         $questionId = $data['questionId'] ?? 0;
-        $this->setApiUrl($this->apiUrl . $questionId . '/answer');
+        $this->setApiUrl($this->apiUrl . $questionId . '/answers');
         $this->setMethod("POST");
 
         $query = [
             'text' => ''
         ];
+
+        unset($data['questionId']);
 
         return $this->getResponse($query, $data, true);
     }
