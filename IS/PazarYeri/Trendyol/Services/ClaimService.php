@@ -15,7 +15,7 @@ Class ClaimService extends Request
 	 * @var string
 	 *
 	 */
-	public $apiUrl = 'https://api.trendyol.com/sapigw/suppliers/{supplierid}/claims?claimItemStatus=created';
+	public $apiUrl = 'https://api.trendyol.com/sapigw/suppliers/{supplierid}/claims?claimItemStatus=Accepted';
     
 	/**
 	 *
