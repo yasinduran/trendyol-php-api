@@ -15,7 +15,7 @@ Class ClaimService extends Request
 	 * @var string
 	 *
 	 */
-	public $apiUrl = 'https://api.trendyol.com/sapigw/suppliers/{supplierid}/claims?claimItemStatus=Accepted';
+	public $apiUrl = 'https://api.trendyol.com/sapigw/suppliers/{supplierId}/claims?claimItemStatus=Accepted';
     
 	/**
 	 *
@@ -40,11 +40,11 @@ Class ClaimService extends Request
 	public function getClaims($data = array())
 	{
 		$query = array(
-            'startDate'         => array('required' => array('format' => 'unixTime')),
-            'endDate'           => array('required' => array('format' => 'unixTime')),
+            'startDate'         => '',
+            'endDate'           => '',
             'page'              => '',
             'size'              => '',
-            'supplierId'        => array('required' => ''),
+            'supplierId'        => '',
             'claimIds'          => '',
             'claimItemStatus'   => '',
             'orderNumber'       => '',
