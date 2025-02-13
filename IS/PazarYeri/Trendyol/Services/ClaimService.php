@@ -37,7 +37,7 @@ Class ClaimService extends Request
 	 * @return array 
 	 *
 	 */
-	public function getSettlements($data = array())
+	public function getClaims($data = array())
 	{
 		$query = array(
             'startDate'         => array('required' => array('format' => 'unixTime')),
