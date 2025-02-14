@@ -71,4 +71,11 @@ Class CargoService extends Request
 		return $this->getResponse(true, true);
 	}
 
+
+    public function getCargoDetails($data = array())
+    {
+        $this->setApiUrl('https://api.trendyol.com/integration/finance/che/sellers/{supplierId}/cargo-invoice/'.$data["invoiceSerialNumber"].'/items');
+        return $this->getResponse(true, true);
+    }
+
 }
