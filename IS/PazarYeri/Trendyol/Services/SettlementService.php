@@ -16,7 +16,7 @@ Class SettlementService extends Request
 	 *
 	 */
 	public $apiUrl = 'https://api.trendyol.com/integration/finance/che/sellers/{supplierId}/settlements';
-    
+
 	/**
 	 *
 	 * Request sınıfı için gerekli ayarların yapılması
@@ -34,13 +34,13 @@ Class SettlementService extends Request
 	 * Trendyol sisteminde oluşan muhasebesel kayıtlarınızı bu servis aracılığı ile entegrasyon üzerinden çekebilirsiniz.
 	 *
 	 * @author Özer Özdaş <ozer@ozdas.org>
-	 * @return array 
+	 * @return array
 	 *
 	 */
 	public function getSettlements($data = array())
 	{
 		$query = array(
-			'transactionType'   => array('required' => array("Sale", "Return", "Discount", "DiscountCancel", "Coupon", "CouponCancel", "ProvisionPositive", "ProvisionNegative")),
+			'transactionType'   => array('required' => array("Sale", "Return", "Discount", "DiscountCancel", "Coupon", "CouponCancel", "ProvisionPositive", "ProvisionNegative", "ManualRefund", "ManualRefundCancel", "TYDiscount", "TYDiscountCancel", "TYCoupon", "TYCouponCancel")),
 			'startDate'         => array('required' => array('format' => 'unixTime')),
 			'endDate'           => array('required' => array('format' => 'unixTime')),
 			'page'              => '',

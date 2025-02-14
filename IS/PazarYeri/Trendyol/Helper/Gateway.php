@@ -51,6 +51,7 @@ Class GateWay
 		'settlement' => 'SettlementService',
         'question'   => 'QuestionService',
         'claim'      => 'ClaimService',
+        'finance'    => 'FinanceService',
 	);
 
 	/**
