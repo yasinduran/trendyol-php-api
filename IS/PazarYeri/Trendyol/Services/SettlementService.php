@@ -41,8 +41,8 @@ Class SettlementService extends Request
 	{
 		$query = array(
 			'transactionType'   => array('required' => array("Sale", "Return", "Discount", "DiscountCancel", "Coupon", "CouponCancel", "ProvisionPositive", "ProvisionNegative", "ManualRefund", "ManualRefundCancel", "TYDiscount", "TYDiscountCancel", "TYCoupon", "TYCouponCancel")),
-			'startDate'         => array('required' => array('format' => 'unixTime')),
-			'endDate'           => array('required' => array('format' => 'unixTime')),
+			'startDate'         => '',
+			'endDate'           => '',
 			'page'              => '',
 			'size'              => '',
 			'supplierId'        => array('required' => ''),
