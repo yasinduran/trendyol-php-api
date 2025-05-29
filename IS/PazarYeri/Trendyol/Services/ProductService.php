@@ -35,7 +35,7 @@ Class ProductService extends Request
 	 * Trendyol üzerindeki ürünleri filtrelemek için kullanılır.
 	 *
 	 * @author Ismail Satilmis <ismaiil_0234@hotmail.com>
-	 * @return array 
+	 * @return array
 	 *
 	 */
 	public function filterProducts($data = array())
@@ -48,7 +48,8 @@ Class ProductService extends Request
 			'endDate'       => array('format' => 'unixTime'),
 			'page'          => '',
 			'dateQueryType' => array('required' => array('CREATED_DATE' , 'LAST_MODIFIED_DATE')),
-			'size'          => ''
+			'size'          => '',
+            'onSale'      => false,
 		);
 
 		return $this->getResponse($query, $data);
@@ -106,7 +107,7 @@ Class ProductService extends Request
         $this->setApiUrl('https://api.trendyol.com/sapigw/suppliers/{supplierId}/v2/products');
         $this->setMethod("PUT");
         $query = array(
-            'items'=> array( 
+            'items'=> array(
                 'barcode'               => '',
                 'title'                 => '',
                 'productMainId'         => '',
