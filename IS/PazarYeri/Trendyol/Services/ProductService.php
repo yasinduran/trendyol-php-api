@@ -49,7 +49,7 @@ Class ProductService extends Request
 			'page'          => '',
 			'dateQueryType' => array('required' => array('CREATED_DATE' , 'LAST_MODIFIED_DATE')),
 			'size'          => '',
-            'onSale'      => false,
+            'onSale'      =>  '',
 		);
 
 		return $this->getResponse($query, $data);
