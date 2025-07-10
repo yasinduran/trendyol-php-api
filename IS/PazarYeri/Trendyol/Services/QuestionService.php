@@ -60,9 +60,15 @@ Class QuestionService extends Request
 
     public function createAnswer($data)
     {
-        $this->setApiUrl($this->baseApiUrl);
+        /**$this->setApiUrl($this->baseApiUrl);
         $questionId = $data['questionId'] ?? 0;
         $this->setApiUrl($this->apiUrl . $questionId . '/answers');
+        $this->setMethod("POST");**/
+
+        $sellerId = $data['sellerId'] ?? 0;
+        $questionId = $data['questionId'] ?? 0;
+
+        $this->setApiUrl("https://apigw.trendyol.com/integration/qna/sellers/{$sellerId}/questions/{$questionId}/answers");
         $this->setMethod("POST");
 
         $query = [

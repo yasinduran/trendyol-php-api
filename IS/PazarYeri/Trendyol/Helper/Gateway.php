@@ -50,6 +50,8 @@ Class GateWay
 		'webhook'    => 'WebhookService',
 		'settlement' => 'SettlementService',
         'question'   => 'QuestionService',
+        'claim'      => 'ClaimService',
+        'finance'    => 'FinanceService',
 	);
 
 	/**

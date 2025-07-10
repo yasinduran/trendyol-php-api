@@ -5,7 +5,7 @@ namespace IS\PazarYeri\Trendyol\Services;
 use IS\PazarYeri\Trendyol\Helper\Request;
 use IS\PazarYeri\Trendyol\Helper\TrendyolException;
 
-Class SettlementService extends Request
+Class ClaimService extends Request
 {
     /**
 	 *
@@ -15,7 +15,7 @@ Class SettlementService extends Request
 	 * @var string
 	 *
 	 */
-    public $apiUrl = 'https://apigw.trendyol.com/integration/finance/che/sellers/{supplierId}/settlements';
+	public $apiUrl = 'https://api.trendyol.com/sapigw/suppliers/{supplierId}/claims';
     
 	/**
 	 *
@@ -34,18 +34,20 @@ Class SettlementService extends Request
 	 * Trendyol sisteminde oluşan muhasebesel kayıtlarınızı bu servis aracılığı ile entegrasyon üzerinden çekebilirsiniz.
 	 *
 	 * @author Özer Özdaş <ozer@ozdas.org>
-	 * @return array
+	 * @return array 
 	 *
 	 */
-	public function getSettlements($data = array())
+	public function getClaims($data = array())
 	{
 		$query = array(
-			'transactionType'   => array('required' => array("Sale", "Return", "Discount", "DiscountCancel", "Coupon", "CouponCancel", "ProvisionPositive", "ProvisionNegative", "ManualRefund", "ManualRefundCancel", "TYDiscount", "TYDiscountCancel", "TYCoupon", "TYCouponCancel")),
-			'startDate'         => '',
-			'endDate'           => '',
-			'page'              => '',
-			'size'              => '',
-			'supplierId'        => array('required' => ''),
+            'startDate'         => '',
+            'endDate'           => '',
+            'page'              => '',
+            'size'              => '',
+            'supplierId'        => '',
+            'claimIds'          => '',
+            'claimItemStatus'   => '',
+            'orderNumber'       => '',
 		);
 		$this->setApiUrl($this->apiUrl);
 		return $this->getResponse($query, $data);
