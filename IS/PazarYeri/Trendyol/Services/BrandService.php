@@ -15,7 +15,7 @@ Class BrandService extends Request
 	 * @var string
 	 *
 	 */
-	public $apiUrl = 'https://api.trendyol.com/sapigw/brands';
+    public $apiUrl = 'https://apigw.trendyol.com/integration/product/brands';
 
 	/**
 	 *
