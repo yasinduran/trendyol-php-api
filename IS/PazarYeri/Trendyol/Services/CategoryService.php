@@ -15,9 +15,9 @@ Class CategoryService extends Request
 	 * @var string
 	 *
 	 */
-	public $apiUrl = 'https://api.trendyol.com/sapigw/product-categories';
+	public $apiUrl = 'https://apigw.trendyol.com/integration/product/product-categories';
 
-    public $baseApiUrl = 'https://api.trendyol.com/sapigw/product-categories';
+    public $baseApiUrl = 'https://apigw.trendyol.com/integration/product/product-categories';
 
 	/**
 	 *

@@ -15,8 +15,8 @@ Class SettlementService extends Request
 	 * @var string
 	 *
 	 */
-	public $apiUrl = 'https://api.trendyol.com/integration/finance/che/sellers/{supplierId}/settlements';
-
+    public $apiUrl = 'https://apigw.trendyol.com/integration/finance/che/sellers/{supplierId}/settlements';
+    
 	/**
 	 *
 	 * Request sınıfı için gerekli ayarların yapılması

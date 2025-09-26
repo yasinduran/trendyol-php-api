@@ -16,9 +16,9 @@ Class QuestionService extends Request
 	 *
 	 */
 
-    public $baseApiUrl = 'https://api.trendyol.com/sapigw/suppliers/{supplierId}/questions/';
+    public $baseApiUrl = 'https://apigw.trendyol.com/integration/qna/sellers/{supplierId}/questions/filter/';
 
-	public $apiUrl = 'https://api.trendyol.com/sapigw/suppliers/{supplierId}/questions/';
+	public $apiUrl = 'https://apigw.trendyol.com/integration/qna/sellers/{supplierId}/questions/filter/';
 
 	/**
 	 *

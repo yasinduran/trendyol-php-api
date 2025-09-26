@@ -16,7 +16,7 @@ Class ProductService extends Request
 	 * @var string
 	 *
 	 */
-	public $apiUrl = 'https://api.trendyol.com/sapigw/suppliers/{supplierId}/products';
+    public $apiUrl = 'https://apigw.trendyol.com/integration/product/sellers/{supplierId}/products';
 
 	/**
 	 *
@@ -65,7 +65,7 @@ Class ProductService extends Request
      */
     public function createProducts($data = array())
     {
-        $this->setApiUrl('https://api.trendyol.com/sapigw/suppliers/{supplierId}/v2/products');
+        $this->setApiUrl('https://apigw.trendyol.com/integration/product/sellers/{supplierId}/products');
         $this->setMethod("POST");
         $query = array(
             'items'=> array(
