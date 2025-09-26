@@ -41,7 +41,7 @@ Class QuestionService extends Request
 	public function getQuestions(array $data = array())
 	{
         $this->setApiUrl($this->baseApiUrl);
-        $this->setApiUrl($this->apiUrl . 'filter');
+        //$this->setApiUrl($this->apiUrl . 'filter');
 
         $query = [
             'barcode' => '',
