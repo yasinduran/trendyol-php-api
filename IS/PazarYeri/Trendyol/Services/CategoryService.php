@@ -71,4 +71,36 @@ Class CategoryService extends Request
 		return $this->getResponse(true, array('categoryId' => $categoryId), false);
 	}
 
+	/**
+	 *
+	 * Trendyol üzerindeki kategorinin özelliklerini döndürür. (V2)
+	 *
+	 * @author Ismail Satilmis <ismaiil_0234@hotmail.com>
+	 * @param int $categoryId
+	 * @return array 
+	 *
+	 */
+	public function getCategoryAttributesV2($categoryId)
+	{
+		$this->setApiUrl('https://apigw.trendyol.com/integration/product/categories/{categoryId}/attributes');
+		return $this->getResponse(true, array('categoryId' => $categoryId), false);
+	}
+
+	/**
+	 *
+	 * Trendyol üzerindeki kategori özellik değerlerini döndürür. (V2)
+	 *
+	 * @author Ismail Satilmis <ismaiil_0234@hotmail.com>
+	 * @param int $categoryId
+	 * @param int $attributeId
+     * @param array $data
+	 * @return array 
+	 *
+	 */
+	public function getCategoryAttributeValuesV2($categoryId, $attributeId, $data = array())
+	{
+		$this->setApiUrl('https://apigw.trendyol.com/integration/product/categories/{categoryId}/attributes/{attributeId}/values');
+		return $this->getResponse(true, array_merge(array('categoryId' => $categoryId, 'attributeId' => $attributeId), $data));
+	}
+
 }
