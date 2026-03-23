@@ -55,6 +55,85 @@ Class ProductService extends Request
 		return $this->getResponse($query, $data);
 	}
 
+	/**
+	 *
+	 * Trendyol üzerindeki tekil ürün bilgisini barkod filtreleyerek getirir. (V2)
+	 *
+	 * @author Ismail Satilmis <ismaiil_0234@hotmail.com>
+	 * @param string $barcode
+	 * @return array
+	 *
+	 */
+	public function filterProductsBasicV2($barcode)
+	{
+		$this->setApiUrl('https://apigw.trendyol.com/integration/product/sellers/{supplierId}/product/{barcode}');
+		return $this->getResponse(true, array('barcode' => $barcode));
+	}
+
+	/**
+	 *
+	 * Trendyol üzerindeki onaylı ürünleri filtrelemek için kullanılır. (V2)
+	 *
+	 * @author Ismail Satilmis <ismaiil_0234@hotmail.com>
+	 * @param array $data
+	 * @return array
+	 *
+	 */
+	public function filterApprovedProductsV2($data = array())
+	{
+		$this->setApiUrl('https://apigw.trendyol.com/integration/product/sellers/{supplierId}/products/approved');
+		$query = array(
+			'barcode'       => '',
+			'startDate'     => array('format' => 'unixTime'),
+			'endDate'       => array('format' => 'unixTime'),
+			'page'          => '',
+			'dateQueryType' => array('required' => array('CREATED_DATE' , 'LAST_MODIFIED_DATE')),
+			'size'          => '',
+            'onSale'        => '',
+            'nextPageToken' => ''
+		);
+
+        foreach ($data as $key => $value) {
+            if (!isset($query[$key])) {
+                $query[$key] = '';
+            }
+        }
+
+		return $this->getResponse($query, $data);
+	}
+
+	/**
+	 *
+	 * Trendyol üzerindeki onaysız (draft) ürünleri filtrelemek için kullanılır. (V2)
+	 *
+	 * @author Ismail Satilmis <ismaiil_0234@hotmail.com>
+	 * @param array $data
+	 * @return array
+	 *
+	 */
+	public function filterUnapprovedProductsV2($data = array())
+	{
+		$this->setApiUrl('https://apigw.trendyol.com/integration/product/sellers/{supplierId}/products/unapproved');
+		$query = array(
+			'barcode'       => '',
+			'startDate'     => array('format' => 'unixTime'),
+			'endDate'       => array('format' => 'unixTime'),
+			'page'          => '',
+			'dateQueryType' => array('required' => array('CREATED_DATE' , 'LAST_MODIFIED_DATE')),
+			'size'          => '',
+            'onSale'        => '',
+            'nextPageToken' => ''
+		);
+
+        foreach ($data as $key => $value) {
+            if (!isset($query[$key])) {
+                $query[$key] = '';
+            }
+        }
+
+		return $this->getResponse($query, $data);
+	}
+
     /**
      * Bu servis kullanılarak gönderilen ürünler Trendyol.com'da daha hızlı yayına alınmaktadır. (Ürün Aktarımı v2)
      *
