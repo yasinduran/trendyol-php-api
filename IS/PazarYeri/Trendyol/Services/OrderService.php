@@ -90,8 +90,8 @@ Class OrderService extends Request
 	 *   4. hasMore=false olduğunda akış tamamlanır.
 	 *
 	 * @param array $data {
-	 *   @type int    $startDate             Unix timestamp (saniye), lastModifiedStartDate olarak iletilir
-	 *   @type int    $endDate               Unix timestamp (saniye), lastModifiedEndDate olarak iletilir
+	 *   @type int    $startDate             Unix timestamp (saniye) → lastModifiedStartDate (ms) olarak gönderilir
+	 *   @type int    $endDate               Unix timestamp (saniye) → lastModifiedEndDate (ms) olarak gönderilir
 	 *   @type string $status                Sipariş durumu filtresi
 	 *   @type int    $size                  Sayfa başı kayıt sayısı (maks 200)
 	 *   @type string $nextCursor            Önceki yanıttan gelen opaque cursor değeri
@@ -105,16 +105,28 @@ Class OrderService extends Request
 	{
 		$this->setApiUrl($this->apiStreamUrl);
 
+		// startDate/endDate → lastModifiedStartDate/lastModifiedEndDate (ms) olarak map edilir.
+		// Stream API yalnızca lastModifiedStartDate/lastModifiedEndDate kabul eder.
+		if (isset($data['startDate']) && !isset($data['lastModifiedStartDate'])) {
+			$data['lastModifiedStartDate'] = $data['startDate'];
+			unset($data['startDate']);
+		}
+
+		if (isset($data['endDate']) && !isset($data['lastModifiedEndDate'])) {
+			$data['lastModifiedEndDate'] = $data['endDate'];
+			unset($data['endDate']);
+		}
+
 		$query = array(
-			'startDate'          => array('format' => 'unixTime'),
-			'endDate'            => array('format' => 'unixTime'),
-			'size'               => '',
-			'nextCursor'         => '',
-			'status'             => array('required' => array('Created', 'Picking', 'Invoiced', 'Shipped', 'Cancelled', 'Delivered', 'UnDelivered', 'Returned', 'Repack', 'UnSupplied')),
-			'orderByField'       => array('required' => array('PackageLastModifiedDate', 'CreatedDate')),
-			'orderByDirection'   => array('required' => array('ASC', 'DESC')),
-			'orderNumber'        => '',
-			'shipmentPackagesId' => '',
+			'lastModifiedStartDate' => array('format' => 'unixTime'),
+			'lastModifiedEndDate'   => array('format' => 'unixTime'),
+			'size'                  => '',
+			'nextCursor'            => '',
+			'status'                => array('required' => array('Created', 'Picking', 'Invoiced', 'Shipped', 'Cancelled', 'Delivered', 'UnDelivered', 'Returned', 'Repack', 'UnSupplied')),
+			'orderByField'          => array('required' => array('PackageLastModifiedDate', 'CreatedDate')),
+			'orderByDirection'      => array('required' => array('ASC', 'DESC')),
+			'orderNumber'           => '',
+			'shipmentPackagesId'    => '',
 		);
 
 		return $this->getResponse($query, $data);
